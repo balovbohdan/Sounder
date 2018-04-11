@@ -668,7 +668,7 @@ Sounder.prototype.__getSoundPath = function (name, ext) {
 /**
  * Returns available extensions for sound with this name.
  * Looks for sounds on the server side.
- * [BB: It is needed to overting this method. Now it returns extensions browser support.]
+ * [BB: It is needed to overthink this method. Now it returns extensions browser support.]
  * @param {string} name Sound name.
  * @return {Promise<Array>} Available extensions.
  * @private
