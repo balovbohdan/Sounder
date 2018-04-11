@@ -4,17 +4,28 @@
  * Working with sounds.
  *
  * @param {Object} [params] Parameters.
- *     @param {Object[]} [params.sounds] Sounds data to play.
-     * @param {string} [params.path]
-     * @param {boolean} [params.autoplay = false]
-     * @param {boolean} [params.loop = false]
-     * @param {boolean} [params.muted = false]
-     * @param {boolean} [params.preload = true]
-     * @param {number} [params.volume = 1]
+ *     @param {Array<{name: string, loop: boolean, volume: number}>} [params.sounds] Sounds data to play.
+ *     @param {string} [params.path] Path to the folder with sounds.
+ *     @param {boolean} [params.autoplay = false]
+ *     @param {boolean} [params.loop = false]
+ *     @param {boolean} [params.muted = false]
+ *     @param {boolean} [params.preload = true]
+ *     @param {number} [params.volume = 1]
  *
  * @version 1.0.0
  * @author Balov Bohdan <balovbohdan@gmail.com>
  * @constructor
+ *
+ * @example
+ * Sounder.init({
+ *     sounds: [
+ *         { name: "sound-1", loop: true, volume: 1.0 },
+ *         { name: "sound-2"}
+ *     ],
+ *     path: "/sounds/",
+ *     preload: true,
+ *     volume: 1.0
+ * });
  */
 function Sounder(params) {
     params = params || {};
