@@ -766,18 +766,12 @@ Sounder.prototype.__getBrowserName = function () {
         ua = nav.userAgent,
         isOpera = function () { return /opera|opr/i.test(ua); };
 
-    if (/chrome/i.test(ua) && /google inc\./i.test(v) && !isOpera())
-        return "chrome";
-    else if (/firefox/i.test(ua))
-        return "firefox";
-    else if (isOpera())
-        return "opera";
-    else if (/msie/i.test(ua))
-        return "explorer";
-    else if (/edge/i.test(ua))
-        return "edge";
-    else if (/Apple Computer, Inc\./i.test(v))
-        return "safari";
+    if (/chrome/i.test(ua) && /google inc\./i.test(v) && !isOpera()) return "chrome";
+    if (/firefox/i.test(ua)) return "firefox";
+    if (isOpera()) return "opera";
+    if (/msie/i.test(ua)) return "explorer";
+    if (/edge/i.test(ua)) return "edge";
+    if (/Apple Computer, Inc\./i.test(v)) return "safari";
 
     return "";
 };
