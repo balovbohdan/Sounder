@@ -338,7 +338,7 @@ Sounder.prototype.addSounds = function (sounds) {
 
 /**
  * Waits while instance is preparing.
- * @return {Promise}
+ * @return {Promise<Sounder>}
  */
 Sounder.prototype.wait = function () {
     if (this.__ready) return Promise.resolve(this);
