@@ -12,7 +12,7 @@
  *     @param {boolean} [params.preload = true]
  *     @param {number} [params.volume = 1]
  *
- * @version 1.0.0
+ * @version 1.0.1
  * @author Balov Bohdan <balovbohdan@gmail.com>
  * @constructor
  *
@@ -338,7 +338,7 @@ Sounder.prototype.addSounds = function (sounds) {
 
 /**
  * Waits while instance is preparing.
- * @return {Promise<Sounder>}
+ * @return {Promise}
  */
 Sounder.prototype.wait = function () {
     if (this.__ready) return Promise.resolve(this);
@@ -772,17 +772,18 @@ Sounder.prototype.__getSoundData = function (soundName) {
  * @private
  */
 Sounder.prototype.__getBrowserName = function () {
-    var nav = window.navigator,
-        v = nav.vendor,
-        ua = nav.userAgent,
-        isOpera = function () { return /opera|opr/i.test(ua); };
+    var nav = window.navigator;
+    var v = nav.vendor;
+    var ua = nav.userAgent;
+    var isOpera = function () { return /opera|opr/i.test(ua); };
+    var isIE = function () { return /Mozilla\/5\.0 \(Windows NT/i.test(ua) || /msie/i.test(ua); };
 
     if (/chrome/i.test(ua) && /google inc\./i.test(v) && !isOpera()) return "chrome";
     if (/firefox/i.test(ua)) return "firefox";
     if (isOpera()) return "opera";
-    if (/msie/i.test(ua)) return "explorer";
     if (/edge/i.test(ua)) return "edge";
     if (/Apple Computer, Inc\./i.test(v)) return "safari";
+    if (isIE()) return "explorer";
 
     return "";
 };
@@ -794,7 +795,7 @@ Sounder.prototype.__getBrowserName = function () {
  */
 Sounder.prototype.__getBrowserExts = function () {
     var browserName = this.__getBrowserName();
-    return this.__exts[browserName ? browserName : "all"];
+    return this.__exts[browserName ? browserName : "explorer"];
 };
 
 /////////////////////////////////////////////////////////////////////////////////////
